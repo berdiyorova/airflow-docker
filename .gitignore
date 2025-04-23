@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.pyo
+
+venv/
+env/
+.env
+
+# Airflow specific
+airflow.cfg
+airflow.db
+#dags/__pycache__/
+logs/
+run/
+tmp/
+*.log
+
+# IDE configuration files
+.idea/
+.vscode/
+*.iml
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Miscellaneous
+*.DS_Store
+*.egg-info/
+dist/
+build/
