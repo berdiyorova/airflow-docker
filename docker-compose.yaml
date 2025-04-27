@@ -4,7 +4,7 @@ services:
     image: apache/airflow:2.8.1-python3.11
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/acp_db
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/airflow_db
       AIRFLOW__CORE__FERNET_KEY: 'DVGx8RkQOVvJxXqzb8C2C6EOQoj3pmq-R0oggHQEcDM='
       AIRFLOW__WEBSERVER__SECRET_KEY: 'mysecret'
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
@@ -22,9 +22,18 @@ services:
     image: apache/airflow:2.8.1-python3.11
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/acp_db
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/airflow_db
       AIRFLOW__WEBSERVER__SECRET_KEY: 'mysecret'
     volumes:
       - ./dags:/opt/airflow/dags
       - ../acploads:/opt/acploads
     command: scheduler
+
+  airflow-init:
+    image: apache/airflow:2.8.1-python3.11
+    command: airflow db init
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/airflow_db
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ../acploads:/opt/acploads
