@@ -10,7 +10,7 @@ services:
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
     volumes:
       - ./dags:/opt/airflow/dags
-      - ../acploads:/opt/acploads
+      - /var/www/acp/backend/acploads:/opt/acploads
     ports:
       - "8080:8080"
     command: webserver --debug
@@ -26,7 +26,7 @@ services:
       AIRFLOW__WEBSERVER__SECRET_KEY: 'mysecret'
     volumes:
       - ./dags:/opt/airflow/dags
-      - ../acploads:/opt/acploads
+      - /var/www/acp/backend/acploads:/opt/acploads
     command: scheduler
 
   airflow-init:
@@ -36,4 +36,4 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://acp_user:86XodTYv77ynu01ib@108.181.199.102/airflow_db
     volumes:
       - ./dags:/opt/airflow/dags
-      - ../acploads:/opt/acploads
+      - /var/www/acp/backend/acploads:/opt/acploads
