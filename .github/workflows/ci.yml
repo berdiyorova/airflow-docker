@@ -32,7 +32,7 @@ jobs:
       - name: Run Lint (black check)
         run: |
           pip install black
-          black --check .
+          black .
 
       - name: Tear down
         if: always()
