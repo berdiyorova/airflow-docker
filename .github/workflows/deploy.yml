@@ -22,5 +22,5 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
           cd /var/www/airflow/airflow-docker
           git pull origin main
-          docker-compose -f docker-compose.yml up -d --build
+          docker-compose -f docker-compose.yaml up -d --build
         EOF
