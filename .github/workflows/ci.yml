@@ -1,0 +1,33 @@
+---
+name: Airflow Docker CI
+
+on: [ push ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Airflow Docker Compose stack
+        run: docker-compose -f docker-compose.yaml up -d --build
+
+      - name: Wait for Airflow Webserver
+        run: |
+          echo "Waiting for Airflow Webserver to start..."
+          sleep 60
+          curl --fail http://localhost:8080/health || exit 1
+
+      - name: Run Lint (black check)
+        run: |
+          pip install black
+          black --check .
+
+      - name: Tear down
+        if: always()
+        run: docker-compose -f docker-compose.yaml down
