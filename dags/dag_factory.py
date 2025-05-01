@@ -7,7 +7,7 @@ dag_list = [
     "Circle", "Landstar", "Loads", "Mystic", "Parade", "BayAndBay", "Trucker_Tools",
 ]
 
-VENV = "/opt/acploads/.venv"
+VENV = "/opt/acploads/venv"
 
 def create_dag(src):
     dag = DAG(
