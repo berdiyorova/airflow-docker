@@ -12,7 +12,7 @@ VENV = "/opt/acploads/.venv"
 def create_dag(src):
     dag = DAG(
         dag_id=f"{src}_parser_daily",
-        schedule_interval="@daily",
+        schedule_interval="@hourly",
         default_args={
             "start_date": datetime(2025, 4, 20),
             "retries": 1,
@@ -40,4 +40,4 @@ def create_dag(src):
     return dag
 
 for s in dag_list:
-    globals()[f"{s}_parser_daily"] = create_dag(s)
+    globals()[f"{s}_parser_hourly"] = create_dag(s)
