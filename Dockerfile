@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /opt/acploads
 
-COPY ./acploads/requirements.txt /opt/acploads/requirements.txt
+COPY ../acploads/requirements.txt /opt/acploads/requirements.txt
 
 RUN python3 -m venv /opt/acploads/.venv && \
     /opt/acploads/.venv/bin/pip install --no-cache-dir -U pip setuptools wheel && \
