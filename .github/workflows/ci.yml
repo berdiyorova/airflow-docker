@@ -20,8 +20,11 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
 
-      - name: Build Airflow Docker Compose stack
-        run: docker-compose -f docker-compose.yaml up -d --build --no-cache
+      - name: Build Docker images with no cache
+        run: docker-compose -f docker-compose.yaml build --no-cache
+
+      - name: Start Airflow stack
+        run: docker-compose -f docker-compose.yaml up -d
 
       - name: Wait for Airflow Webserver
         run: |
