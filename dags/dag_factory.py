@@ -3,7 +3,7 @@ from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
 
 dag_list = [
-    "Magellan", "Magellan_logis", "Aljex", "Aljex_Fox", "Aljex_HD", "Amil",
+    "Magellan", "Magellan_logis", "Aljex", "Aljex_Fox", "Aljex_HD", "Amil", "ATS",
     "Circle", "Landstar", "Loads", "Mystic", "Parade", "BayAndBay", "Trucker_Tools",
 ]
 
