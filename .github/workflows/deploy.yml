@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             sudo chown -R ${{ secrets.VPS_USER }}:${{ secrets.VPS_USER }} /var/www/airflow/airflow-docker
