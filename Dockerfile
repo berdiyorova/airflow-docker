@@ -19,5 +19,3 @@ USER airflow
 
 RUN pip install --no-cache-dir -U pip setuptools wheel \
  && pip install --no-cache-dir -r /opt/acploads/requirements.txt
-
-#ENV PATH="/opt/acploads/.venv/bin:$PATH"
